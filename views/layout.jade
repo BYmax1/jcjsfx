@@ -1,0 +1,36 @@
+html(ng-app='myApp')
+  head
+    title= title
+    link(rel='stylesheet', type='text/css', href='./stylesheets/style.css')
+    link(href='http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='./stylesheets/flat-ui.min.css')
+    meta(name='viewport', charset='utf-8', content='width=device-width, initial-scale=1.0')
+
+    script(src='http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js')
+
+    script(src='./javascripts/app.js')
+    
+    script(src='./javascripts/searchCtrl.js')
+    
+    script(src='./javascripts/duoshuo.js')
+
+  body
+    .row
+      #header
+       .container
+        a(href='/')
+          img.img-responsive(src='./images/logo.png', width='280px', height='280px')
+     if(success)
+      .container
+        .alert.alert-success
+          p #{success}           
+    .row
+      #content
+        block content
+    .row 
+      #footer
+        .container
+
+
+    
+

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container
+    table.table.table-striped
+      caption 教师信息
+      tbody
+        tr
+          td 姓名
+          td #{teacher.teachername}
+        tr
+          td 学院
+          td #{teacher.schoolname}
+        tr
+          td 课程
+          td #{teacher.course}
+        tr
+          td 联系方式
+          td #{teacher.number}          
+    #page-comment 
+      img.img-responsive(src='./images/comment-block.png') 
+      - var url='http://jcjsfx.duapp.com/teacher?id='+teacher.id;     
+      .ds-thread(data-thread-key= teacher.id, data-title= teacher.teachername, data-url= url) 

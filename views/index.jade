@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    .container
+        #search(ng-controller='searchCtrl')
+          #search-box
+            input(type='text', placeholder='输入老师/学院/课程', ng-model='test', ng-change='fun()')
+            span.glyphicon.glyphicon-search(style='color: white;')
+          ul(ng-hide='myVar')
+            li(ng-repeat="x in names | filter:test | orderBy:'name'")
+              a(target="_blank" ng-href='/teacher?id={{x.id}}') {{ x.teachername  + ', ' + x.schoolname + ',' + x.course }}
+            li
+              a(href='./add' target="_blank")
+                | 没有找到? 来
+                span(style='color:red') 创建
+                | 一个吧!      
+        #comment-teacher
+         .col-xs-6.col-sm-4.col-lg-4.col-lg-offset-2.col-sm-offset-2
+           .row
+             .col-xs-12.col-lg-7
+               h5  最新评论
+           .row   
+              #comment
+              .ds-recent-comments(data-num-items='3', data-show-avatars='1', data-show-time='1', data-show-title='1', data-show-admin='0', data-excerpt-length='20')
+         .col-xs-6.col-sm-4.col-lg-4.col-lg-offset-2.col-sm-offset-2
+           .row
+             .col-xs-12.col-lg-7
+              h5 热门老师
+           .row   
+             #teacher
+              .ds-top-threads(data-range='monthly', data-num-items='3')
+

@@ -1,0 +1,71 @@
+<html ng-app="myApp">
+<head>
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/flat-ui.min.css">
+
+
+    <meta name="viewport" charset='utf-8' content="width=device-width, initial-scale=1.0">  
+</head>
+<body onload="checkCookies()">
+   <div id="header">
+     <div class="container">
+        <a href="/"><img src="./images/logo.png" class="img-responsive" width="280px" height="280px"></a>
+     </div>
+   </div>
+    <div class="container">
+       <div id="search" ng-controller="searchCtrl">
+            <div id="search-box">
+                 <input type="text" placeholder="输入老师\学院\课程" ng-model="test" ng-change="fun()">
+                 <span class="glyphicon glyphicon-search" style="color: white;"></span>
+            </div>
+            <ul ng-hide="myVar">
+               <li ng-repeat="x in names | filter:test | orderBy:'name'">
+                 <a href="">{{ x.teachername  + ', ' + x.schoolname + ',' + x.course }}</a>
+               </li>
+            </ul>
+       </div>
+      <div class="row">
+       <div id="check" ng-controller="checkCtrl" class="col-lg-6 col-lg-offset-4">
+         <div ng-repeat="x in checkList">
+           <input type="checkbox" ng-model="x.flag"> 
+           <span ng-bind="x.teachername"></span>
+           <span ng-bind="x.schoolname"></span>
+           <span ng-bind="x.course"></span>
+           <span ng-bind="x.number"></span>
+           <span ng-bind="x.email"></span>
+         </div>
+         <div class="row">
+           <div class="col-lg-4 col-lg-offset-2" style="margin-top:30px;">
+              <button class="btn btn-info" ng-click="approve()">通过</button>
+              <button class="btn btn-danger" ng-click="disapprove()">失败</button>    
+           </div>
+         </div>
+       </div>        
+      </div> 
+
+    </div>
+
+
+
+
+<script>
+function checkCookies()
+{
+   var name=prompt("password","");//将输入的内容赋给变量 name ，
+   if(name!="wantsamething")
+   {
+     window.location.href='./back.html'
+   }
+}
+</script>
+
+<script src="http://libs.useso.com/js/angular.js/1.2.5/angular.min.js"></script>
+<script src="http://libs.useso.com/js/angular.js/1.2.5/angular-route.min.js"></script> 
+<script src="./javascripts/app.js"></script>
+<script src="./javascripts/searchCtrl.js"></script>
+<script src="./javascripts/checkCtrl.js"></script>
+<script src="./javascripts/duoshuo.js"></script>
+</body>
+</html>

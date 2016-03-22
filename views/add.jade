@@ -1,0 +1,49 @@
+extends layout
+
+block content
+   #add
+      .col-xs-3.col-lg-4
+      .col-xs-6.col-lg-4
+        form.form-horizontal(role='form', action='./add', method='post')
+          .form-group
+            label.col-sm-3.control-label(for='firstname') 名字
+            .col-sm-9
+              input.form-control(type='text', name='teacherName', placeholder='请输入名字', required='')
+          .form-group
+            label.col-sm-3.control-label(for='lastname') 学院
+            .col-sm-9
+              input.form-control(type='text', name='schoolName',list='school', placeholder='请输入学院', required='')
+              datalist#school
+               option 信息管理
+               option 会计
+               option 财税与公共管理
+               option 金融
+               option 体育
+               option 人文
+               option 法
+               option 旅游与城市
+               option 艺术
+               option 国际            
+          .form-group
+            label.col-sm-3.control-label(for='lastname') 课程
+            .col-sm-9
+              input.form-control(type='text', name='course', placeholder='请输入所授课程', required='')
+          .form-group
+            label.col-sm-3.control-label(for='lastname') 联系方式
+            .col-sm-9
+              input.form-control(type='text', name='number', placeholder='qq/手机号(可不填)')              
+          .form-group
+            label.col-sm-3.control-label(for='lastname') 您的邮箱
+            .col-sm-9
+              input.form-control(type='email', name='email', placeholder='用于通知您审核结果', required='')
+          .form-group
+            .col-sm-9.col-sm-offset-3
+              input.form-control.btn.btn-block.btn-lg.btn-primary(type='submit')
+              input.form-control.btn.btn-block.btn-lg.btn-danger(type='button' value='返回',onclick="window.location.href='./'")
+      .col-xs-3.col-lg-4
+
+
+
+
+
+   

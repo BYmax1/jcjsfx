@@ -1,0 +1,22 @@
+extends layout
+
+block content
+      .container
+        #search(ng-controller='searchCtrl')
+          #search-box
+            input(type='text', placeholder='输入老师/学院/课程', ng-model='test', ng-change='fun()')
+            span.glyphicon.glyphicon-search(style='color: white;')
+          ul(ng-hide='myVar')
+            li(ng-repeat="x in names | filter:test | orderBy:'name'")
+              a(target="_blank" ng-href='/teacher?id={{x.id}}') {{ x.teachername  + ', ' + x.schoolname + ',' + x.course }}
+            li
+              a(href='./add' target="_blank")
+                | 没有找到? 来
+                span(style='color:red') 创建
+                | 一个吧!      
+        #checkList(ng-controller='checkCtrl')
+          li(ng-repeat="x in checkList")      
+             input(type="checkbox",ng-model='x.flag')
+             span {{x.teachername}} 
+             span {{x.schoolname}} 
+             span {{x.course}}     
